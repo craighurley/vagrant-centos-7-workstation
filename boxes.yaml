@@ -1,0 +1,17 @@
+---
+- name: centos-7.local
+  description: centos-7
+  box: centos/7
+  cpus: 4
+  cpu_execution_cap: 66
+  ram: 4096
+  video_ram: 32
+  remote_display: 'on'
+  gui: false
+  ssh_port: 2201
+  vboxguest_update: true
+  provision:
+    meta-data: ./cloud-init/nocloud-net/meta-data.yaml
+    user-data: ./cloud-init/nocloud-net/user-data.yaml
+    cloud-init: ./scripts/cloud-init.sh
+    workstation: ./scripts/workstation.sh

@@ -1,0 +1,19 @@
+#cloud-config
+
+hostname: centos-7
+fqdn: centos-7.local
+manage_etc_hosts: true
+
+ssh_deletekeys: 1
+ssh_pwauth: no
+
+locale: en_NZ.UTF-8
+timezone: "Pacific/Auckland"
+
+users:
+  - name: vagrant
+    lock_passwd: false
+    passwd: $6$rounds=656000$f9kCjdz1EY3WacVu$14lAryT/3DYjWoBnfarkDeYxmkdyS1zUtABpOm.SPh7PaMHq7bY9zVf3.KTlasu0CNcpNlY6m/bTUu8g3Qvau.
+    sudo: ALL=(ALL) NOPASSWD:ALL
+
+package_upgrade: true
