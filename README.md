@@ -7,7 +7,7 @@ Vagrant project for creating a CentOS-7 workstation.
 1. Start the box
 
     ```sh
-    vagrant up
+    $ vagrant up
     ```
 
 1. Login via SSH or RDP
@@ -23,6 +23,12 @@ Vagrant project for creating a CentOS-7 workstation.
         Login via virtualboxes remote display by RDP'ing to `localhost:3389`.
 
         Default usr/pwd: `vagrant`/`vagrant`
+
+        Optionally, start the graphical desktop
+
+        ```
+        $ startx
+        ```
 
 ## Notes
 
