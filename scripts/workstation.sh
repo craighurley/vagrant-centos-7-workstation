@@ -11,8 +11,9 @@ yum group install -y "GNOME Desktop"
 #unlink /etc/systemd/system/default.target
 #ln -sf /lib/systemd/system/graphical.target /etc/systemd/system/default.target
 
-yum install -y epel-release \
-    vim \
+yum install -y epel-release
+
+yum install -y vim \
     tmux \
     clamav \
     clamav-update \
