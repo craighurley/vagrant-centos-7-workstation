@@ -2,6 +2,12 @@
 
 Vagrant project for creating a CentOS-7 workstation.
 
+## Requirements
+
+Vagrant plugins:
+
+- vagrant-vbguest
+
 ## How to Use
 
 1. Start the box
@@ -16,6 +22,12 @@ Vagrant project for creating a CentOS-7 workstation.
 
         ```sh
         $ vagrant ssh
+        ```
+
+        ... or if you want to use the box as a SOCKS proxy:
+
+        ```
+        $ vagrant ssh -- -D 127.0.0.1:8080
         ```
 
     1. RDP
