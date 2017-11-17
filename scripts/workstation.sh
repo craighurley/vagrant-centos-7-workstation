@@ -13,14 +13,14 @@ yum group install -y "GNOME Desktop"
 
 yum install -y epel-release
 
-yum install -y vim \
+yum install -y clamav \
+    clamav-update \
+    networkmanager-openconnect-gnome \
+    openconnect \
+    pangox-compat \
     tmux \
     tree \
-    clamav \
-    clamav-update \
-    pangox-compat \
-    openconnect \
-    NetworkManager-openconnect-gnome
+    vim
 
 freshclam
 
