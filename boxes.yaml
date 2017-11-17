@@ -2,10 +2,10 @@
 - name: centos-7.local
   description: centos-7
   box: centos/7
-  cpus: 4
-  cpu_execution_cap: 66
-  ram: 4096
-  video_ram: 32
+  cpus: 2
+  cpu_execution_cap: 75
+  ram: 2048
+  video_ram: 16
   remote_display: 'on'
   gui: false
   ssh_port: 2201
