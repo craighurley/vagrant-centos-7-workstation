@@ -45,7 +45,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
       # Shared folders
       # Other options: create: "true", type: "virtualbox", disabled: true
       srv.vm.synced_folder '.', '/vagrant', disabled: true
-      srv.vm.synced_folder './vboxhost/', '/home/vagrant/vboxguest'
+      srv.vm.synced_folder './share/', '/home/vagrant/share'
 
       srv.vm.provider 'virtualbox' do |vb|
         vb.customize ['modifyvm', :id, '--cpus', boxes['cpus']]

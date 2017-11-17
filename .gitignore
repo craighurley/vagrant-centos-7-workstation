@@ -1,4 +1,3 @@
-!mount/.gitkeep
+!share/.gitkeep
 .vagrant/
 *.log
-mount/*
