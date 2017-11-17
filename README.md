@@ -44,7 +44,13 @@ Vagrant plugins:
 
 ## Notes
 
-### Modules
+### General
+
+- selinux is enforcing.
+- firewalld is enabled and by default only allows `ssh` and `dhcpv6-client`.
+- clamav is installed and auto updates every 3 hours.
+
+### cloud-init modules
 
 As this project is using `vagrant`, it relies on the `nocloud` module.  There are two variations of this module; one that does not provide network access and one that does; this project uses the latter by default.
 
@@ -53,4 +59,5 @@ As this project is using `vagrant`, it relies on the `nocloud` module.  There ar
 
 ## Links
 
-[http://cloudinit.readthedocs.io](http://cloudinit.readthedocs.io)
+- [https://www.centos.org/](https://www.centos.org/)
+- [http://cloudinit.readthedocs.io](http://cloudinit.readthedocs.io)
