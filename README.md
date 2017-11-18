@@ -1,6 +1,6 @@
-# vagrant-centos-7-workstation
+# vagrant-centos-workstation
 
-Vagrant project for creating a CentOS-7 workstation.
+Vagrant project for creating a CentOS workstation.
 
 ## Requirements
 

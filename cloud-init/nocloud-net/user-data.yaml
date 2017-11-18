@@ -1,7 +1,7 @@
 #cloud-config
 
-hostname: centos-7
-fqdn: centos-7.local
+hostname: centos
+fqdn: centos.local
 manage_etc_hosts: true
 
 ssh_deletekeys: 1
