@@ -15,7 +15,7 @@ yum install -y epel-release
 
 yum install -y clamav \
     clamav-update \
-    networkmanager-openconnect-gnome \
+    NetworkManager-openconnect-gnome \
     openconnect \
     pangox-compat \
     tmux \
