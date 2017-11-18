@@ -34,8 +34,6 @@ Vagrant plugins:
 
         Login via virtualboxes remote display by RDP'ing to `localhost:3389`.
 
-        Default usr/pwd: `vagrant`/`vagrant`
-
         Optionally, start the graphical desktop
 
         ```
@@ -43,6 +41,10 @@ Vagrant plugins:
         ```
 
 ## Notes
+
+### Usr/pwd
+
+- `vagrant`/`vagrant`
 
 ### General
 
