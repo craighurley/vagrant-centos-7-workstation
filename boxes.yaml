@@ -6,8 +6,8 @@
   cpu_execution_cap: 75
   ram: 2048
   video_ram: 16
-  remote_display: 'on'
   gui: false
+  remote_display_port: 3389
   ssh_port: 2201
   vboxguest_update: true
   provision:

@@ -58,9 +58,10 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
         vb.customize ['modifyvm', :id, '--clipboard', 'bidirectional']
 
         # enable remote display (RDP) for box
-        if boxes['remote_display']
-          vb.customize ['modifyvm', :id, '--vrde', boxes['remote_display']]
+        if boxes['remote_display_port']
+          vb.customize ['modifyvm', :id, '--vrde', 'on']
           vb.customize ['modifyvm', :id, '--vrdeaddress', '127.0.0.1']
+          vb.customize ['modifyvm', :id, '--vrdeport', boxes['remote_display_port']]
         else
           vb.customize ['modifyvm', :id, '--vrde', 'off']
         end
