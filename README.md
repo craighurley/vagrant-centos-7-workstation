@@ -52,6 +52,15 @@ Vagrant plugins:
 - firewalld is enabled and by default only allows `ssh` and `dhcpv6-client`.
 - clamav is installed and auto updates every 3 hours.
 
+### Graphical Desktop
+
+If you want to automatically start the graphical desktop (GNOME by default) at boot:
+
+```
+unlink /etc/systemd/system/default.target
+ln -sf /lib/systemd/system/graphical.target /etc/systemd/system/default.target
+```
+
 ### cloud-init modules
 
 As this project is using `vagrant`, it relies on the `nocloud` module.  There are two variations of this module; one that does not provide network access and one that does; this project uses the latter by default.
