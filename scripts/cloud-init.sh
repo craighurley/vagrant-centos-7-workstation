@@ -3,14 +3,15 @@
 set -ex
 
 SUCCESS_INDICATOR=/opt/.vagrant_provision_success
+# SUCCESS_INDICATOR=/opt/.vagrant_provision_cloud_init_success
 DATA_SOURCE=/var/lib/cloud/seed/nocloud-net
-META_DATA=/tmp/vagrant/cloud-init/nocloud-net/meta-data
-USER_DATA=/tmp/vagrant/cloud-init/nocloud-net/user-data
+META_DATA=/tmp/cloud-init/meta-data
+USER_DATA=/tmp/cloud-init/user-data
 
 # confirm this is a centos box
 [[ ! -f /etc/centos-release ]] && exit 1
 
-# check if vagrant_provision has run before
+# check if provision script has run before
 [[ -f $SUCCESS_INDICATOR ]] && exit 0
 
 # install cloud-init
@@ -25,7 +26,7 @@ mkdir -p $DATA_SOURCE
 cloud-init init
 cloud-init modules
 
-# create vagrant_provision on successful run
+# create file on provision success
 touch $SUCCESS_INDICATOR
 
 exit 0

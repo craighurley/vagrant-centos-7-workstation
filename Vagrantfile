@@ -72,16 +72,32 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
         else
           vb.gui = false
         end
-
       end
 
-      # Copy cloud-init files to tmp and provision
       if boxes['provision']
-        srv.vm.provision :file, :source => boxes['provision']['meta-data'], :destination => '/tmp/vagrant/cloud-init/nocloud-net/meta-data'
-        srv.vm.provision :file, :source => boxes['provision']['user-data'], :destination => '/tmp/vagrant/cloud-init/nocloud-net/user-data'
-        srv.vm.provision :shell, :path => boxes['provision']['cloud-init']
-        srv.vm.provision :shell, :path => boxes['provision']['workstation']
+        if boxes['provision']['cloud-init']
+          begin
+            srv.vm.provision :file, :source => boxes['provision']['cloud-init']['meta'], :destination => '/tmp/cloud-init/meta-data'
+            srv.vm.provision :file, :source => boxes['provision']['cloud-init']['user'], :destination => '/tmp/cloud-init/user-data'
+            srv.vm.provision :shell, :path => boxes['provision']['cloud-init']['script']
+          rescue => e
+            puts e.backtrace
+            abort('There was an error in cloud-init provisioning.')
+          end
+        end
+
+        if boxes['provision']['scripts']
+          begin
+            boxes['provision']['scripts'].each do |s|
+              srv.vm.provision :shell, :path => s
+            end
+          rescue => e
+            puts e.backtrace
+            abort('There was an error in general script provisioning.')
+          end
+        end
       end
+
     end
   end
 end

@@ -11,7 +11,10 @@
   ssh_port: 2201
   vboxguest_update: true
   provision:
-    meta-data: ./cloud-init/nocloud-net/meta-data.yaml
-    user-data: ./cloud-init/nocloud-net/user-data.yaml
-    cloud-init: ./scripts/cloud-init.sh
-    workstation: ./scripts/workstation.sh
+    cloud-init:
+      meta: ./cloud-init/nocloud-net/meta-data.yaml
+      user: ./cloud-init/nocloud-net/user-data.yaml
+      script: ./scripts/cloud-init.sh
+    scripts:
+      - ./scripts/workstation.sh
+      - ./scripts/dotfiles.sh

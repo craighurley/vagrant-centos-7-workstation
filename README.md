@@ -34,7 +34,7 @@ Vagrant plugins:
 
         Login via virtualboxes remote display by RDP'ing to `localhost:3389`.
 
-        Optionally, start the graphical desktop
+        Optionally, start the graphical desktop if it has been installed:
 
         ```
         $ startx
@@ -54,7 +54,13 @@ Vagrant plugins:
 
 ### Graphical Desktop
 
-If you want to automatically start the graphical desktop (GNOME by default) at boot:
+If you want to install the graphical desktop:
+
+```
+yum group install -y "GNOME Desktop"
+```
+
+To start the graphical desktop at boot:
 
 ```
 unlink /etc/systemd/system/default.target

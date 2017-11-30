@@ -2,26 +2,52 @@
 
 set -ex
 
+SUCCESS_INDICATOR=/opt/.vagrant_provision_workstation_success
+FIREFOX="https://download.mozilla.org/?product=firefox-latest&os=linux64&lang=en-GB"
+
+# confirm this is a centos box
+[[ ! -f /etc/centos-release ]] && exit 1
+
+# check if provision script has run before
+[[ -f $SUCCESS_INDICATOR ]] && exit 0
+
 systemctl start firewalld
 systemctl enable firewalld
 
-yum group install -y "GNOME Desktop"
-
-# enable graphical display at boot (commented out by default to save resources -- use startx when a GUI is needed)
-#unlink /etc/systemd/system/default.target
-#ln -sf /lib/systemd/system/graphical.target /etc/systemd/system/default.target
-
 yum install -y epel-release
 
-yum install -y clamav \
+yum install -y \
+    clamav \
     clamav-update \
-    NetworkManager-openconnect-gnome \
-    openconnect \
+    git \
+    glibc \
+    gtk3 \
+    libnm-gtk \
+    libnma \
     pangox-compat \
-    tmux \
-    tree \
-    vim
+    vim \
+    wget \
+    xterm \
+    xulrunner
+
+# remove default install of firefox if it exists
+yum remove -y firefox
+if [[ -f /usr/bin/firefox ]] ; then
+    unlink /usr/bin/firefox
+fi
+
+# download and manually install a more recent version of firefox
+wget --quiet -O firefox.tar.bz2 "$FIREFOX"
+tar xfj firefox.tar.bz2 --directory /opt
+ln -s /opt/firefox/firefox /usr/bin/firefox
+rm firefox.tar.bz2
+
+# hack: force firefox to create a _complete_ profile
+su - vagrant -c 'firefox -screenshot http://checkip.amazonaws.com/'
 
 freshclam
+
+# create file on provision success
+touch $SUCCESS_INDICATOR
 
 exit 0
