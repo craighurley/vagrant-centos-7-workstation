@@ -44,6 +44,7 @@ rm firefox.tar.bz2
 
 # hack: force firefox to create a _complete_ profile
 su - vagrant -c 'firefox -screenshot http://checkip.amazonaws.com/'
+rm /home/vagrant/screenshot.png
 
 freshclam
 
